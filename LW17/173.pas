@@ -4,30 +4,15 @@ USES
 VAR
   Number, Min, Max, Average, Numerator, Denominator, RemainderN, Degree: INTEGER;
   
-  BEGIN {Stat}
+BEGIN {Stat}
   ReadNumber(INPUT, Number);
-  WHILE (Number = -1) AND (NOT EOF(INPUT))
-  DO
-    BEGIN
-      READLN(INPUT);
-      ReadNumber(INPUT, Number)
-    END;
-    
-  IF Number <> -1
-  THEN
-    BEGIN
-      Min := Number;
-      Max := Number;
-      Average := Number;
-      Numerator := 0;
-      Denominator := 2;      
-    END
-  ELSE
-    BEGIN
-      Min := -1;
-      Max := -1;
-      Average := -1
-    END; 
+
+  Min := Number;
+  Max := Number;
+  Average := Number;
+  Numerator := 0;
+  Denominator := 2;      
+  
   READLN(INPUT);
   
   WHILE NOT EOF(INPUT)
