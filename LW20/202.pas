@@ -1,3 +1,4 @@
+PROGRAM GraphicPrinting2(INPUT, OUTPUT);
 PROCEDURE ReadGraphicPrinting(VAR Letter: CHAR; VAR TotalPosition; VAR n: INTEGER);
 VAR
   Positions: SET OF 1..25;
@@ -57,6 +58,6 @@ NEGIN
         END        
     END
   ELSE
-    WRITELN 
-END
+    WRITE(' ') 
+END;
 
