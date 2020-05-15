@@ -42,8 +42,6 @@ BEGIN{ReadMonth}
 END;{ReadMonth}
 
 PROCEDURE WriteMonth(VAR FOut: TEXT; VAR Mo: Month);
-VAR
-  Ch1, Ch2, Ch3: CHAR;
 BEGIN {WriteMonth}
   IF Mo = JAN THEN WRITE(FOut, 'JAN') ELSE
   IF Mo = FEB THEN WRITE(FOut, 'FEB') ELSE
