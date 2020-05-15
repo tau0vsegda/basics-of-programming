@@ -34,4 +34,29 @@ BEGIN
     'Z', 'z': Positions := n * [2, 3, 4, 5, 9, 13, 17, 22, 23, 24, 25]
   END;
   
-  Positions
+  TotalPosition := TotalPosition + Positions;
+  n := n + 1;
+END;
+
+PROCEDURE WriteGraphicPrinting(VAR TotalPosition: SET OF 1..25);
+NEGIN
+  IF Positions <> []
+  THEN
+    BEGIN
+      FOR Index := 1 TO 25 * n 
+      DO
+        BEGIN
+          IF Index IN Positions
+          THEN
+            WRITE('@')
+          ELSE
+            WRITE(' ');
+          IF Index MOD 5 = 0
+          THEN
+            WRITE(' ')
+        END        
+    END
+  ELSE
+    WRITELN 
+END
+
