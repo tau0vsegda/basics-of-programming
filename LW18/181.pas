@@ -9,22 +9,23 @@ VAR
   Student: 1 .. ClassSize + 1;
   NextScore: Score;
   Ave, TotalScore, ClassTotal: INTEGER;
+
 BEGIN {AverageScore}
   ClassTotal := 0;
   WRITELN('Student averages:');
   Student := 1;
-  WHILE Student <= ClassSize
+  WHILE (Student <= ClassSize) AND (NOT EOF)
   DO 
     BEGIN
       TotalScore := 0;
       WhichScore := 1;
-      WHILE WhichScore <= NumberOfScores
+      WHILE (WhichScore <= NumberOfScores) AND (NOT EOLN)
       DO
         BEGIN
           READ(NextScore);
           TotalScore := TotalScore + NextScore;
           WhichScore := WhichScore + 1          
-        END;
+        END;  
       TotalScore := TotalScore * 10;
       Ave := TotalScore DIV NumberOfScores;
       IF Ave MOD 10 >= 5

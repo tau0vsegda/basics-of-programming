@@ -2,36 +2,34 @@ PROGRAM Prime(INPUT, OUTPUT);
 CONST
   Max = 100;
 VAR
-  PrSet, RemSet: SET OF 2 .. Max;
+  SetOfDigit: SET OF 2 .. Max;
   FirstElement, Element: INTEGER;
 
 BEGIN{Prime}
-  PrSet := [2 .. Max];
-  RemSet := [];
+  SetOfDigit := [2 .. Max];
   FirstElement := 2;
   WRITE('Primes ranging from 2 to 100 is ');
-  FirstElement := 2;
-  
-  WHILE NOT (PrSet = [])
+  WHILE NOT (SetOfDigit = [])
   DO
     BEGIN
-      IF FirstElement IN PrSet
+      IF (FirstElement IN SetOfDigit)
       THEN
         BEGIN
+          IF FirstElement <> 2
+          THEN
+            WRITE(', ');
+          WRITE(FirstElement);
           Element := FirstElement;
           WHILE Element <= Max
           DO
             BEGIN
-              RemSet := RemSet + [Element];
-              Element := Element + FirstElement
-            END;  
-        PrSet := PrSet - RemSet;
-        IF FirstElement <> 2
-        THEN
-          WRITE(', ');
-        WRITE(FirstElement)
-      END;
+              IF (Element IN SetOfDigit) AND (Element MOD FirstElement = 0)
+              THEN
+                SetOfDigit := SetOfDigit - [Element];
+              Element := Element + 1
+            END
+        END;
       FirstElement := FirstElement + 1
     END;
-  WRITELN  
+  WRITELN
 END.{Prime}

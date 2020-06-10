@@ -67,6 +67,3 @@ BEGIN
       WriteGraphicPrinting(Ch)
     END
 END.
-
-
- 

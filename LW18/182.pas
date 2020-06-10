@@ -2,43 +2,52 @@ PROGRAM AverageScore(INPUT, OUTPUT);
 CONST
   NumberOfScores = 4;
   ClassSize = 4;
-  
-{TYPE
-  Score = 0 .. 100;}
-  
+ 
 VAR
   WhichScore: 1 .. NumberOfScores + 1;
   Student: 1 .. ClassSize + 1;
-  
-  {NextScore: Score;}
-  
   NextScore, Ave, TotalScore, ClassTotal: INTEGER;
-  Correct, TotalCorrect: BOOLEAN;
-  Ch: CHAR;
+  Correct: BOOLEAN;
+  
+
+PROCEDURE WriteName(VAR From, Into: TEXT);
+VAR
+  Ch, Flag: CHAR;
+
+BEGIN {WriteName}
+  Flag := '0';
+  Ch := '#';
+  WHILE (Flag <> 'N') AND (NOT EOLN(From))
+  DO
+    BEGIN
+      READ(From, Ch);
+      IF (Ch <> ' ') AND (Flag = '0')
+      THEN
+        Flag := 'Y';
+      IF (Ch = ' ') AND (Flag = 'Y')
+      THEN
+        Flag := 'N';
+      IF Flag = 'Y'
+      THEN
+        WRITE(Into, Ch)
+    END;
+  WRITE(Into, ' ')
+END; {WriteName }
   
 BEGIN {AverageScore}
   ClassTotal := 0;
-  TotalCorrect := TRUE;
   
   WRITELN('Student averages:');
-  
+  Correct := TRUE;
   Student := 1;
-  WHILE Student <= ClassSize
+  WHILE (Student <= ClassSize) AND (NOT EOF) AND (Correct)
   DO 
     BEGIN
-      READ(Ch);
-      WHILE Ch <> ' '
-      DO
-        BEGIN
-          WRITE(Ch);
-          READ(Ch)
-        END;
-      WRITE(' ');  
-      
+      WriteName(INPUT, OUTPUT);     
       TotalScore := 0;
       WhichScore := 1;
       
-      WHILE (WhichScore <= NumberOfScores)
+      WHILE (WhichScore <= NumberOfScores) AND (NOT EOLN) AND (Correct)
       DO
         BEGIN
           READ(NextScore);
@@ -50,11 +59,9 @@ BEGIN {AverageScore}
               WhichScore := WhichScore + 1
             END
           ELSE
-            BEGIN
-              WhichScore := 5;
-              TotalCorrect := FALSE
-            END
+            WRITE('incorrect data')
         END;
+        
       IF Correct
       THEN
         BEGIN
@@ -66,21 +73,19 @@ BEGIN {AverageScore}
           ELSE
             WRITE(Ave DIV 10);
           ClassTotal := ClassTotal + TotalScore
-        END
-      ELSE
-        WRITE('incorrect data');
+        END;
+
       WRITELN;  
       Student := Student + 1;
       READLN  
     END;  
-  WRITE('Class average: ');
-  IF TotalCorrect 
+  
+  IF Correct 
   THEN
     BEGIN
+      WRITE('Class average: ');
       ClassTotal := ClassTotal DIV (ClassSize * NumberOfScores);
       WRITE(ClassTotal DIV 10, '.', ClassTotal MOD 10:1)
-    END
-  ELSE
-    WRITE('incorrect data');
+    END;
   WRITELN    
 END.  {AverageScore}
