@@ -5,7 +5,7 @@ VAR
   Number, Min, Max, Average, Numerator, Denominator, RemainderN, Degree: INTEGER;
   
 BEGIN
-  {считываем число из файла}
+  {СЃС‡РёС‚С‹РІР°РµРј С‡РёСЃР»Рѕ РёР· С„Р°Р№Р»Р°}
   ReadNumber(INPUT, Number);
   WHILE (Number = -1) AND (NOT EOF(INPUT))
   DO
@@ -14,7 +14,7 @@ BEGIN
       ReadNumber(INPUT, Number)
     END;
     
-  {инициализация переменных}
+  {РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРµСЂРµРјРµРЅРЅС‹С…}
   IF Number <> -1
   THEN
     BEGIN
@@ -31,7 +31,7 @@ BEGIN
       Average := -1
     END; 
   READLN(INPUT); 
-  {считывание следующих чисел и нахождение минимального, максимального и среднего арефметического}
+  {СЃС‡РёС‚С‹РІР°РЅРёРµ СЃР»РµРґСѓСЋС‰РёС… С‡РёСЃРµР» Рё РЅР°С…РѕР¶РґРµРЅРёРµ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ, РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ Рё СЃСЂРµРґРЅРµРіРѕ Р°СЂРµС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ}
   WHILE NOT EOF(INPUT)
   DO
     BEGIN
@@ -39,13 +39,13 @@ BEGIN
       IF Number <> -1 
       THEN
         BEGIN
-          {сравнение с минимальным}
+          {СЃСЂР°РІРЅРµРЅРёРµ СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј}
           
           IF Number < Min
           THEN
             Min := Number;  
           
-          {сравнение с маскимальным}
+          {СЃСЂР°РІРЅРµРЅРёРµ СЃ РјР°СЃРєРёРјР°Р»СЊРЅС‹Рј}
           IF Number > Max
           THEN
             Max := Number;
@@ -53,7 +53,7 @@ BEGIN
           RemainderN := Average MOD 2 + Number MOD 2;
           Average := Average DIV 2 + Number DIV 2;
           
-          {дробная часть среднего арефметического}
+          {РґСЂРѕР±РЅР°СЏ С‡Р°СЃС‚СЊ СЃСЂРµРґРЅРµРіРѕ Р°СЂРµС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ}
           IF Numerator <> 0
           THEN
             Denominator := Denominator * 2;
@@ -71,9 +71,9 @@ BEGIN
   IF (Min <> -1) AND (Max <> -1) AND (Average <> -1)
   THEN
     BEGIN
-      WRITELN(OUTPUT, ' Минимальное число: ', Min);
-      WRITELN(OUTPUT, ' Максимальное число: ', Max);
-      WRITE(OUTPUT, ' Среднее арефметическое: ', Average);
+      WRITELN(OUTPUT, ' РњРёРЅРёРјР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ: ', Min);
+      WRITELN(OUTPUT, ' РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ: ', Max);
+      WRITE(OUTPUT, ' РЎСЂРµРґРЅРµРµ Р°СЂРµС„РјРµС‚РёС‡РµСЃРєРѕРµ: ', Average);
       IF Numerator <> 0
       THEN
         BEGIN
@@ -81,7 +81,6 @@ BEGIN
           WHILE Denominator <> 1
           DO
             BEGIN
-              {WRITELN(OUTPUT, 'WOW');}
               Denominator := Denominator DIV 2;
               Numerator := Numerator *10 DIV 2
             END;
@@ -92,5 +91,5 @@ BEGIN
         END
     END
   ELSE
-    WRITELN(OUTPUT, ' Среди входных данных не найдено ни одно число')        
+    WRITELN(OUTPUT, ' РЎСЂРµРґРё РІС…РѕРґРЅС‹С… РґР°РЅРЅС‹С… РЅРµ РЅР°Р№РґРµРЅРѕ РЅРё РѕРґРЅРѕ С‡РёСЃР»Рѕ')        
 END.
