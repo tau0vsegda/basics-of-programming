@@ -14,7 +14,7 @@ INTERFACE
 
 IMPLEMENTATION
 PROCEDURE InsertWord(VAR TreeBranch: Tree; NewWord: STRING);
-BEGIN{Insert}
+BEGIN{InsertWord}
   IF TreeBranch = NIL
   THEN
     BEGIN
@@ -34,9 +34,9 @@ BEGIN{Insert}
         InsertWord(TreeBranch^.RightBranch, NewWord)
       ELSE
         TreeBranch^.WordCount := TreeBranch^.WordCount + 1
-END; {Insert}
+END; {InsertWord}
 
-PROCEDURE PrintTree(VAR FileOut: TEXT; VAR TreeBranch: Tree);
+PROCEDURE PrintTree(VAR FileOut: TEXT; TreeBranch: Tree);
 BEGIN{PrintTree}
   IF TreeBranch <> NIL
   THEN
@@ -47,7 +47,7 @@ BEGIN{PrintTree}
     END;
 END; {PrintTree}
 
-PROCEDURE DelTree(TreeBranch: Tree);
+PROCEDURE DelTree(VAR TreeBranch: Tree);
 BEGIN{DelTree}
   IF TreeBranch^.LeftBranch <> NIL
   THEN
