@@ -8,9 +8,9 @@ INTERFACE
              WordCount: INTEGER;
              LeftBranch, RightBranch: Tree
            END;
-  PROCEDURE DelTree(TreeBranch: Tree);
+  PROCEDURE DelTree(VAR TreeBranch: Tree);
   PROCEDURE InsertWord(VAR TreeBranch: Tree; NewWord: STRING);
-  PROCEDURE PrintTree(VAR FileOut: TEXT; VAR TreeBranch: Tree);
+  PROCEDURE PrintTree(VAR FileOut: TEXT; TreeBranch: Tree);
 
 IMPLEMENTATION
 PROCEDURE InsertWord(VAR TreeBranch: Tree; NewWord: STRING);
